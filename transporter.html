@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald:wght@500;700&family=Montserrat:ital,wght@0,600;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-cat="transporter">
+  <svg width="0" height="0" style="position:absolute"><defs>
+    <symbol id="ast" viewBox="-100 -100 200 200"><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(0)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(45)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(90)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(135)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(180)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(225)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(270)"/><rect x="-15" y="-96" width="30" height="90" rx="13" transform="rotate(315)"/></symbol>
+  </defs></svg>
+
+  <div id="stage">
+    <!-- background -->
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="ast a1"><svg><use href="#ast"/></svg></div>
+    <div class="ast a2"><svg><use href="#ast"/></svg></div>
+    <div class="ast a3"><svg><use href="#ast"/></svg></div>
+    <div class="ast a4"><svg><use href="#ast"/></svg></div>
+    <div class="ast a5"><svg><use href="#ast"/></svg></div>
+
+    <!-- header -->
+    <div class="logos">
+      <img src="assets/logo-polinema.png" alt="Polinema">
+      <img src="assets/logo-emc-1.png" alt="Logo 2">
+      <img src="assets/logo-emc-2.png" alt="Logo 3">
+      <img src="assets/logo-workshop.png" alt="Workshop">
+      <img src="assets/logo-eeprom.png" alt="EEPROM">
+    </div>
+    <div class="tm" id="session"></div>
+
+    <div class="head">
+      <div class="t-row">
+        <div class="ord"><b id="ordNum"></b><i id="ordSuf"></i></div>
+        <h1 id="title"></h1>
+      </div>
+      <h2 id="subtitle"></h2>
+    </div>
+
+    <!-- timer -->
+    <div class="timer-area">
+      <div class="state" id="state">Siap</div>
+      <div class="time" id="time">00:00.00</div>
+    </div>
+    <div class="cards">
+      <div class="card" id="c1">
+        <h3><span class="key">1</span><span id="n1"></span></h3>
+        <div class="ct" id="t1">--:--.--</div><div class="sub" id="s1"></div>
+      </div>
+      <div class="card" id="c2">
+        <h3><span class="key">2</span><span id="n2"></span></h3>
+        <div class="ct" id="t2">--:--.--</div><div class="sub" id="s2"></div>
+      </div>
+    </div>
+
+    <div class="badge" id="badge"></div>
+
+    <!-- kontrol (tekan H untuk sembunyikan) -->
+    <div class="controls">
+      <div class="row">
+        <label><input type="radio" name="mode" id="modeUp" checked> Count Up</label>
+        <label><input type="radio" name="mode" id="modeDown"> Count Down</label>
+        <span class="chip" id="cdBox">Set: <input type="number" id="setMinutes" min="0" max="99" value="3"> menit</span>
+      </div>
+      <div class="row"><span class="chip"><b>Spasi</b> Mulai</span><span class="chip"><b>1</b>/<b>2</b> Finish</span><span class="chip"><b>R</b> Reset</span><span class="chip"><b>H</b> Sembunyikan</span></div>
+      <div class="btns"><button class="o" tabindex="-1" id="bs">Mulai</button><button tabindex="-1" id="br">Reset</button></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

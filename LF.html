@@ -13,7 +13,6 @@
   </defs></svg>
 
   <div id="stage">
-    <!-- background -->
     <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
     <div class="ast a1"><svg><use href="#ast"/></svg></div>
     <div class="ast a2"><svg><use href="#ast"/></svg></div>
@@ -21,15 +20,13 @@
     <div class="ast a4"><svg><use href="#ast"/></svg></div>
     <div class="ast a5"><svg><use href="#ast"/></svg></div>
 
-    <!-- header -->
     <div class="logos">
-      <img src="../assets/logo-polinema.png" alt="Polinema">
-      <img src="../assets/logo-emc-1.png" alt="Logo 2">
-      <img src="../assets/logo-emc-2.png" alt="Logo 3">
-      <img src="../assets/logo-workshop.png" alt="Workshop">
-      <img src="../assets/logo-eeprom.png" alt="EEPROM">
+      <img class="logo-polinema" src="../assets/logo-polinema.png" alt="Polinema">
+      <img class="logo-emc1" src="../assets/logo-emc-1.png" alt="EMC">
+      <img class="logo-emc2" src="../assets/logo-emc-2.png" alt="EMC">
+      <img class="logo-workshop" src="../assets/logo-workshop.png" alt="Workshop">
+      <img class="logo-eeprom" src="../assets/logo-eeprom.png" alt="EEPROM">
     </div>
-    <div class="tm" id="session"></div>
 
     <div class="head">
       <div class="t-row">
@@ -39,25 +36,27 @@
       <h2 id="subtitle"></h2>
     </div>
 
-    <!-- timer -->
     <div class="timer-area">
-      <div class="state" id="state">Siap</div>
       <div class="time" id="time">00:00.00</div>
     </div>
+
     <div class="cards">
       <div class="card" id="c1">
-        <h3><span class="key">1</span><span id="n1"></span></h3>
-        <div class="ct" id="t1">--:--.--</div><div class="sub" id="s1"></div>
+        <div class="card-top">
+          <input class="team-input" id="team1" type="text" placeholder="Nama Tim" maxlength="30">
+        </div>
+        <div class="ct" id="t1">--:--.--</div>
+        <div class="sub" id="s1"></div>
       </div>
       <div class="card" id="c2">
-        <h3><span class="key">2</span><span id="n2"></span></h3>
-        <div class="ct" id="t2">--:--.--</div><div class="sub" id="s2"></div>
+        <div class="card-top">
+          <input class="team-input" id="team2" type="text" placeholder="Nama Tim" maxlength="30">
+        </div>
+        <div class="ct" id="t2">--:--.--</div>
+        <div class="sub" id="s2"></div>
       </div>
     </div>
 
-    <div class="badge" id="badge"></div>
-
-    <!-- kontrol (tekan H untuk sembunyikan) -->
     <div class="controls">
       <div class="row">
         <label><input type="radio" name="mode" id="modeUp" checked> Count Up</label>

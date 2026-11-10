@@ -11,10 +11,6 @@
   $('ordSuf').textContent = C.edition;
   $('title').textContent = C.title;
   $('subtitle').textContent = CAT.subtitle;
-  $('session').innerHTML = C.session.replace('\n', '<br>');
-  $('badge').textContent = C.badge;
-  $('n1').textContent = CAT.robots[0];
-  $('n2').textContent = CAT.robots[1];
   $('setMinutes').value = CAT.defaultMinutes;
   document.title = 'Timer ' + CAT.subtitle;
 
@@ -65,6 +61,9 @@
 
   function start() {
     if (st !== 'idle') return;
+    // blur input tim supaya shortcut keyboard tidak terblokir
+    document.querySelectorAll('.team-input').forEach(el => el.blur());
+    document.body.classList.add('running');
     if (mode === 'countdown') {
       targetTime = minutes();
       $('time').classList.add('countdown');
@@ -92,6 +91,7 @@
 
   function reset() {
     cancelAnimationFrame(raf);
+    document.body.classList.remove('running');
     st = 'idle'; timeUp = false;
     res = { 1: null, 2: null }; last = 0;
     if (mode === 'countdown') { targetTime = minutes(); $('time').textContent = fmt(targetTime); }
@@ -102,10 +102,6 @@
 
   function ui() {
     const a = res[1], b = res[2];
-    $('state').textContent =
-      timeUp ? 'Waktu Habis!' :
-      st === 'idle' ? 'Siap' :
-      st === 'run' ? (mode === 'countup' ? 'Berjalan' : 'Countdown!') : 'Selesai';
 
     [1, 2].forEach(n => {
       const r = res[n], o = res[n === 1 ? 2 : 1], c = $('c' + n);
@@ -134,7 +130,14 @@
   }
 
   addEventListener('keydown', e => {
-    if (e.repeat || e.target.tagName === 'INPUT' && e.target.type === 'number') return;
+    if (e.repeat) return;
+    // Jika fokus di input angka (set menit), blokir semua shortcut
+    if (e.target.tagName === 'INPUT' && e.target.type === 'number') return;
+    // Jika fokus di team-input, hanya blokir Space/Enter (supaya bisa ketik normal)
+    // tapi tetap izinkan 1, 2, R, H
+    const inTeam = e.target.tagName === 'INPUT' && e.target.classList.contains('team-input');
+    if (inTeam && (e.code === 'Space' || e.key === 'Enter')) return;
+
     if (e.code === 'Space' || e.key === 'Enter') { e.preventDefault(); start(); }
     else if (e.key === '1') finish(1);
     else if (e.key === '2') finish(2);
